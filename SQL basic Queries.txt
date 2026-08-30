@@ -1,0 +1,164 @@
+# SQL Basics – SELECT, WHERE, ORDER BY & GROUP BY
+
+SQL (Structured Query Language) is used to store, retrieve, filter, and analyze data in databases.
+
+## 1. SELECT
+
+Used to retrieve data from a table.
+
+```sql
+SELECT * FROM employees;
+
+Select specific columns:
+
+SELECT name, salary
+FROM employees;
+2. WHERE
+
+Used to filter records based on a condition.
+
+SELECT *
+FROM employees
+WHERE salary > 50000;
+
+Common operators:
+
+=    Equal
+>    Greater than
+<    Less than
+>=   Greater than or equal
+<=   Less than or equal
+<>   Not equal
+
+Using AND:
+
+SELECT *
+FROM employees
+WHERE department = 'IT'
+AND salary > 50000;
+
+Using OR:
+
+SELECT *
+FROM employees
+WHERE department = 'IT'
+OR department = 'HR';
+3. DISTINCT
+
+Used to remove duplicate values.
+
+SELECT DISTINCT department
+FROM employees;
+4. ORDER BY
+
+Used to sort query results.
+
+Ascending:
+
+SELECT *
+FROM employees
+ORDER BY salary ASC;
+
+Descending:
+
+SELECT *
+FROM employees
+ORDER BY salary DESC;
+
+ASC → Lowest to highest
+
+DESC → Highest to lowest
+
+5. Aggregate Functions
+
+Aggregate functions perform calculations on multiple rows.
+
+Function	Purpose
+COUNT()	Counts records
+SUM()	Calculates total
+AVG()	Calculates average
+MIN()	Finds minimum
+MAX()	Finds maximum
+
+Examples:
+
+SELECT COUNT(*) FROM employees;
+
+SELECT SUM(salary) FROM employees;
+
+SELECT AVG(salary) FROM employees;
+
+SELECT MIN(salary) FROM employees;
+
+SELECT MAX(salary) FROM employees;
+6. GROUP BY
+
+Used to group rows with the same values.
+
+Example:
+
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department;
+
+Find average salary by department:
+
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department;
+7. HAVING
+
+HAVING is used to filter grouped results.
+
+SELECT department, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 50000;
+WHERE vs HAVING
+WHERE
+↓
+Filters individual rows
+
+GROUP BY
+↓
+Creates groups
+
+HAVING
+↓
+Filters groups
+8. Combining SQL Clauses
+SELECT department, AVG(salary) AS average_salary
+FROM employees
+WHERE salary > 40000
+GROUP BY department
+HAVING AVG(salary) > 50000
+ORDER BY average_salary DESC;
+9. SQL Query Order
+FROM
+ ↓
+WHERE
+ ↓
+GROUP BY
+ ↓
+HAVING
+ ↓
+SELECT
+ ↓
+ORDER BY
+10. Quick Summary
+SELECT    → Retrieve data
+WHERE     → Filter rows
+DISTINCT  → Remove duplicates
+ORDER BY  → Sort data
+GROUP BY  → Group data
+COUNT()   → Count records
+SUM()     → Total
+AVG()     → Average
+MIN()     → Minimum
+MAX()     → Maximum
+HAVING    → Filter groups
+Conclusion
+
+SELECT, WHERE, ORDER BY, GROUP BY, and aggregate functions are fundamental SQL concepts used for querying and analyzing database data.
+
+⭐ Part of my SQL learning journey.
